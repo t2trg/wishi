@@ -1,5 +1,5 @@
-# WISHI
-Work on IoT Semantic/Hypermedia Interoperability
+# Work on IoT Semantic/Hypermedia Interoperability (WISHI)
+This repository is used as a workspace to continue the work and discussions from the [WISHI workshop](https://github.com/t2trg/2017-07-wishi).
 
 ## Monthly calls
 
