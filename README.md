@@ -12,6 +12,6 @@ If we encounter too many technical problems with Jitsi, we will switch to a back
 ### Draft agenda for the next call
 
 * Introduction
-* Follow-up on action items from WISHI meeting in Prague
+* Follow-up on action items from the WISHI meeting in Prague
 * How to organize future calls
 * Any other business
