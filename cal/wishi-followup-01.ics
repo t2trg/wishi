@@ -19,29 +19,34 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 ORGANIZER;CN=Ari Keränen:MAILTO:ari.keranen@ericsson.com
-DESCRIPTION;LANGUAGE=en-GB:When: 18 September 2017 17:00-18:00. (UTC+02:00)
-  Helsinki\, Kyiv\, Riga\, Sofia\, Tallinn\, Vilnius\nWhere: WebEx\n\n*~*~*
- ~*~*~*~*~*~*~*\n\nFirst WISHI follow-up call.\nFor details\, see: https://
- github.com/t2trg/wishi/\n\n
-SUMMARY;LANGUAGE=en-GB:WISHI follow-up call #1
+DESCRIPTION;LANGUAGE=en-US:When: Monday\, 18 September 2017 5:00 PM-6:00 PM
+ . (UTC+02:00) Helsinki\, Kyiv\, Riga\, Sofia\, Tallinn\, Vilnius\nWhere: O
+ nline\n\n*~*~*~*~*~*~*~*~*~*\n\nFirst WISHI follow-up call.\n\n\nDraft age
+ nda:\n* Introduction\n* Follow-up on action items from the WISHI meeting i
+ n Prague\n* How to organize future calls\n* Any other business\n\n\nJoin h
+ ere: https://jitsi.tools.ietf.org/t2trg-wishi\n\n\nFor more details\, see:
+  https://github.com/t2trg/wishi/\n\n\nIf we encounter too many technical p
+ roblems with Jitsi\, we will switch to a backup solution with dial-in numb
+ ers and update the information in the Github page.\n
+SUMMARY;LANGUAGE=en-US:WISHI follow-up call #1
 DTSTART;TZID=FLE Standard Time:20170918T170000
 DTEND;TZID=FLE Standard Time:20170918T180000
 UID:CAEE2F50-D03E-450B-B5BE-8058CECD57C3
 CLASS:PUBLIC
 PRIORITY:5
-DTSTAMP:20170911T141946Z
+DTSTAMP:20170912T102449Z
 TRANSP:OPAQUE
 STATUS:CONFIRMED
 SEQUENCE:0
-LOCATION;LANGUAGE=en-GB:WebEx
+LOCATION;LANGUAGE=en-US:Online
 X-MICROSOFT-CDO-APPT-SEQUENCE:0
-X-MICROSOFT-CDO-OWNERAPPTID:2115578941
+X-MICROSOFT-CDO-OWNERAPPTID:2115593792
 X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
 X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
 X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
 X-MICROSOFT-CDO-IMPORTANCE:1
 X-MICROSOFT-CDO-INSTTYPE:0
-X-MICROSOFT-DISALLOW-COUNTER:TRUE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:REMINDER
