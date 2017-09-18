@@ -8,7 +8,7 @@ their follow-on work via online collaboration.
 This page is gathering pointers to ongoing work and results.
 
 Right now, it just points at the [WISHI
-wiki](https://github.com/t2trg/2017-07-wishi/wiki) -- please continue
+wiki](https://github.com/t2trg/wishi/wiki) -- please continue
 there for further reading.
 
 
