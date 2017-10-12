@@ -1,17 +1,11 @@
 # Work on IoT Semantic/Hypermedia Interoperability (WISHI)
-This repository is used as a workspace to continue the work and discussions from the [WISHI workshop](https://github.com/t2trg/2017-07-wishi).
+This repository is used as a workspace to continue the work and discussions from the [WISHI workshop](https://github.com/t2trg/2017-07-wishi). 
+
+The main workspace at the moment is the WISHI wiki: https://github.com/t2trg/wishi/wiki
 
 ## Monthly calls
 
-Next call: Monday 18th September, 7:00-8:00 PDT, (16:00-17:00 CEST)
+See details in the wiki: https://github.com/t2trg/wishi/wiki/Agenda-items
 
 Join here: https://jitsi.tools.ietf.org/t2trg-wishi
 
-If we encounter too many technical problems with Jitsi, we will switch to a backup solution with dial-in numbers and update the information here.
-
-### Draft agenda for the next call
-
-* Introduction
-* Follow-up on action items from the WISHI meeting in Prague
-* How to organize future calls
-* Any other business
