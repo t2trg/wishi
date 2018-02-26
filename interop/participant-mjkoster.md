@@ -36,7 +36,7 @@ expect to participate in.
   * Registration and Discovery
     - Resource descriptions with capability metadata are stored in a directory
     - Discovery uses queries to the directory to match semantic tags in the
-    metadata that describe the type of capability, according to what the application 
+    metadata that describe the type of capability, according to what the application
     requires, for example temperature sensing is required for a thermostat application
   * Configuration of resources
     - The application determines through metadata which resources provide the
@@ -81,9 +81,27 @@ your application by each component. Provide some simple diagrams as needed.
 - Describe functions and protocols involved in the various roles:
 - Any particular role is optional
   * Connected Thing (Embedded Client)
+  Connected things will be exposed by a proxy described below.
   * Application Client
+  The application client will discover resources that implement capabilities required
+  by the application, by using a query interface exposed by the directory server.
+  The application will attempt to obtain asynchronous notification of updates to
+  resources selected as inputs, and will update resources selected as outputs. The
+  directory query interface is based on HTTP and SPARQL. The client will use HTTP
+  to interact with the proxy.
   * Proxy or other Intermediary
-  * Directory
+  Connected things are exposed using a cloud based API, which is consumed by the
+  proxy, and re-exposed by the proxy with appropriate hypermedia controls and
+  semantic annotation. Interaction entry points are described by a W3C WoT Thing
+  Description instance, which is registered with the Thing Directory
+  * Thing Directory
+  The Thing Directory contains discoverable links to registered resources. There
+  is a registration interface which is used by Servers to register exposed resources
+  along with metadata in W3C WoT Thing Description format. There is a discovery
+  interface which is used by clients hosting applications to find registered resource
+  instances that expose capabilities selected by particular semantic identifiers.
+  There may be optionally other formats supported, for example CoRE Link-Format
+  (RFC6690)
 
 ## Protocols
 - Which protocols do your servers expose?
@@ -92,7 +110,7 @@ your application by each component. Provide some simple diagrams as needed.
   * MQTT broker will provide asynchronous notifications using topics derived from
   HTTP server paths
 - Which protocols does your client support?
-  * THe Client supports HTTP, MQTT, Websockets, and CoAP
+  * The Client supports HTTP, MQTT, Websockets, and CoAP.
 
 ## Semantic Integration
 - What thing types and Capabilities will be exposed by your servers?
@@ -110,11 +128,15 @@ your application by each component. Provide some simple diagrams as needed.
   * The user indicates which feature of interest they wish to use in the application
 ## Thing Directory
 - What resources and services will you register?
+  * resources which expose the capabilities described above, in W3C Thing Description format
 - What client discovery methods will you use?
-  * Semantic queries, formats
+  * Semantic queries that match annotations found in the registered Thing Descriptions
+  * The queries return instances of Thing Description which satisfy the queries
 - How will you augment the registrations with additional context metadata
-  * Additional semantic annotation about context like location, purpose
+  * Feature of Interest (FoI) annotation will be included in order to provide hints
+  about the physical features that capabilities are bound to
 - How will you do registration life cycle management?
+  * Lifetime provided on registration, refresh cycle with timeout, client caching
 
 ## Intermediary/Proxy
 - What protocols does your proxy consume?
