@@ -3,9 +3,6 @@ This repository is used as a workspace to continue the work and discussions from
 
 The main workspace at the moment is the WISHI wiki: https://github.com/t2trg/wishi/wiki
 
-## Monthly calls
+## Meetings and calls
 
-See details in the wiki: https://github.com/t2trg/wishi/wiki/Agenda-items
-
-Join here: https://jitsi.tools.ietf.org/t2trg-wishi
-
+After the first workshop we have had multiple WISHI calls and face-to-face meetings. For information about the past and future meetings and calls see the Agenda wiki page: https://github.com/t2trg/wishi/wiki/Agenda-items
