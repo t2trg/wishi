@@ -1,0 +1,288 @@
+// an IPSO TEmperature (3303) Object Instance Representation in SenML
+
+[
+  {
+    "bn": "/3303/1/",
+    "bt": 1530764634473
+  },
+  {
+    "n": "5700",
+    "v": 46.5
+  },
+  {
+    "n": "5701",
+    "vs": "ucum:Cel"
+  },
+  {
+    "n": "5601",
+    "v": 22.0
+  },
+  {
+    "n": "5602",
+    "v": 53.7
+  },
+  {
+    "n": "5603",
+    "v": 0
+  },
+  {
+    "n": "5604",
+    "v": 150
+  },
+  {
+    "n": "5605",
+    "v": null
+  },
+  {
+    "n": "5750",
+    "vs": "urn:GeniviVSS:Powertrain:Gearbox:OilTemperature"
+  }
+]
+
+// JSON schema for the 3303 payload
+
+{
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "bn": {
+          "type": "string"
+        },
+        "bt": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5700"
+        },
+        "v": {
+          "type": "number",
+          "@type": "iot:TemperatureData"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5701"
+        },
+        "vs": {
+          "type": "string",
+          "@type": "iot:Units"
+
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5750"
+        },
+        "vs": {
+          "type": "string",
+          "@type": "iot:FeatureOfInterest"
+        }
+      }
+    }
+  ]
+}
+
+// JSON Schema for the tracking limits and reset resource
+
+{
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5601"
+        },
+        "v": {
+          "type": "number",
+          "@type": "iot:MinimumObservedValue"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5602"
+        },
+        "vs": {
+          "type": "string",
+          "@type": "iot:MaximumObservedValue"
+
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5605"
+        },
+        "v": {
+          "const": null
+        }
+      }
+    }
+  ]
+}
+
+// TD to expose temperature and tracking limits
+
+{
+  "@context": [
+    "https://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+    "https://w3c.github.io/wot/w3c-wot-common-context.jsonld",
+    {"iot": "http://iotschema.org/iot#",
+     "coap": "http://iotschema.org/coap#"}
+  ],
+  "base": "coap://0m2m.net:5683/",
+  "id": "urn:uuid:c3068abb-7781-4ab4-9c0b-012408e9e758",
+  "@type": [ "Thing", "iot:TemperatureMeasurement", "iot:ValueTracking" ],
+  "name": "Temperature Sensor",
+  "properties": {
+    "CurrentTemperature": {
+      "writable": false,
+      "observable": true,
+      "@type": ["Property", "iot:Temperature"],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "n": {
+            "type": "string",
+            "const": "5700"
+          },
+          "v": {
+            "@type": ["iot:TemperatureData"],
+            "type": "number",
+            "iot:units": "qudt:degC",
+            "minimum": 0,
+            "maximum": 150
+          }
+        }
+      },
+      "forms": [
+        {
+          "href": "33003/1",
+          "coap:contentformat": 60,
+          "rel": "readProperty",
+          "coap:methodCode": "0.01"
+        },
+        {
+          "href": "3303/1/",
+          "coap:contentformat": 60,
+          "rel": "writeProperty",
+          "coap:methodCode": "0.02"
+        }
+      ]
+    },
+    "LowTemperature": {
+      "writable": false,
+      "observable": true,
+      "@type": ["Property", "iot:MinimumObservedValue"],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "n": {
+            "type": "string",
+            "const": "5601"
+          },
+          "v": {
+            "@type": ["iot:TemperatureData"],
+            "type": "number",
+            "iot:units": "ucum:Cel",
+            "minimum": 0,
+            "maximum": 150
+          }
+        }
+      },
+      "forms": [
+        {
+          "href": "33003/1",
+          "coap:contentformat": 60,
+          "rel": "readProperty",
+          "coap:methodCode": "0.01"
+        }
+      ]
+    },
+    "HighTemperature": {
+      "writable": false,
+      "observable": true,
+      "@type": ["Property", "iot:MaximumObservedValue"],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "n": {
+            "type": "string",
+            "const": "5602"
+          },
+          "v": {
+            "@type": ["iot:TemperatureData"],
+            "type": "number",
+            "iot:units": "ucum:Cel",
+            "minimum": 0,
+            "maximum": 150
+          }
+        }
+      },
+      "forms": [
+        {
+          "href": "33003/1",
+          "coap:contentformat": 60,
+          "rel": "readProperty",
+          "coap:methodCode": "0.01"
+        }
+      ]
+    }
+  },
+  "actions": {
+    "resetminmax": {
+      "@type": "iot:ResetTrackingValuesAction",
+      "forms": [
+        {
+          "href": "3303/1/5605",
+          "rel": "invokeAction",
+          "coap:methodCode": "0.02"
+        }
+      ]
+    }
+  }
+}
+
+// iot.schema definition
+{
+"@id": "iot:Temperature",
+"@type": "rdfs:Class",
+"rdfs:comment": "Temperature interaction property",
+"rdfs:label": "Temperature",
+"rdfs:subClassOf": { "@id": "iot:Property" },
+"iot:providesOutputData": {
+  "@id": "iot:TemperatureData"
+  }
+},
+{
+"@id": "iot:TemperatureData",
+"@type": "rdfs:Class",
+"rdfs:comment": " Temperature data",
+"rdfs:label": "TemperatureData",
+"rdfs:subClassOf": { "@id": "schema:PropertyValue" },
+"schema:propertyType": { "@id": "schema:Float" },
+"schema:unitCode": { "@id": "iot:TemperatureUnit" },
+"schema:minValue": "schema:Float",
+"schema:maxValue": "schema:Float"
+},
