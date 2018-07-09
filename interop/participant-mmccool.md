@@ -1,6 +1,11 @@
 # Participant Questionnaire for the WISHI Semantic Interoperability Test Event
 For Michael McCool, Principal Engineer, Intel; W3C WoT WG Co-chair.
 
+This will be an extension of the 
+[scenarios I prepared for the recent W3C WoT plugfest](https://github.com/w3c/wot/blob/master/plugfest/2018-bundang/preparation-intel.md).  Note: the information provided on the above link was prepared under the W3C IP policy.
+However, this material provides most of the input requested below, including a description of the devices and services,
+and links to the Thing Descriptions used.
+
 ## Goals and Purpose
 The purpose of this questionnaire is to build a collective plan for the Interop
 - Collect information about entries and participants
@@ -22,14 +27,29 @@ The purpose of this questionnaire is to build a collective plan for the Interop
 Each participant provides components to build one or more application scenarios.
 A participant may bring all of the components needed to create an application or
 they may bring some components, expecting other participants to provide the rest of the
-components needed to complete the application. Describe the application scenario(s) you
-expect to participate in.
+components needed to complete the application. 
+
+Describe the application scenario(s) you expect to participate in.
 - What is the problem being solved?
+  * Provide a set of self-describing devices and services
+  * Combine them to provide new services or to transform existing services, eg to improve accessibility.
 - How does the application handle life cycle events and phases
   * Registration and Discovery
+        - Devices and services will be provided with or generate Thing Descriptions using the latest (Bundang) W3C WoT proposal.
+        - Thing Descriptions are in JSON-LD and can use external vocabularies
+        - I have done preliminary markup using vocabulary from iot.schema.org
+        - I can use other vocabularies for additional semantic annotation as well, eg for location
+        - These Thing Descriptions will be (dynamically) registered with one or more Thing Directories
+        - Dynamic registration means that they will time out and be removed if the device is powered off
+        - Thing Directories will have HTTP APIs that will allows SPARQL queries
   * Configuration of resources
+        - Hand-configured.  I will be focusing on operational state, not installation lifecycle
   * Operational Data Exchange
+        - Generally data exchange is via JSON, using Schemas specified in the TDs
+        - A few devices use JPEG images as well, but a pair of resources (a camera and an object identification service) allow the images to be "interpreted" using the object description service, which returns JSON
   * Shutdown and de-registration
+        - Decommissioning is not supported
+        - Thing Descriptions will have short 10s timeouts in the Thing Directories and so will be automatically removed once powered off or disconnected.
 
 ## Functionality and Roles implemented
 See the diagram on slide 5 "Interop Schematic Diagram - Roles and Interactions":
@@ -39,9 +59,19 @@ https://github.com/t2trg/wishi/blob/master/slides/Wishi-Interop-19022018.pdf
 Describe the system components you are providing and the role performed in
 your application by each component. Provide some simple diagrams as needed.
 - What components of the application are you providing?
+     * See the above link for diagrams...
+     * Application Clients (node-wot application both consuming and exposing services)
+     * Connected Things (sensors and actuators) acting as servers.   OCF devices and custom devices (camera, speech output)
+     * Services (virtual devices that act as endpoints, eg servers, but are just software running on a gateway, providing services like data analysis).
+     * Proxies (to provide secure HTTPS access to unsecured HTTP services available behind a NAT or firewall, specifically)
+     * Thing Directory (semantic search over registered Thing Descriptions)
 - What components of your application can be provided by other participants?
+     * All, although the proxies require hand-configuration.
+     * Other OCF devices, if available on the same network and not using security, will also be visible to my IoT REST API server (OCF CoAP/HTTP bridge service)
 - Describe functions and protocols involved in the various roles:
-- Any particular role is optional
+     * HTTP or HTTPs generally.
+     * CoAP is used for some OCF devices but those have HTTP bridges.
+- Roles: all.
   * Connected Thing (Embedded Client)
   * Application Client
   * Proxy or other Intermediary
