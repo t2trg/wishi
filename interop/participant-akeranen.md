@@ -26,14 +26,16 @@ expect to participate in.
 - What is the problem being solved?
 
   * How can we easily integrate LwM2M devices (clients) to a system that is using heterogeneous set of technologies; and in particular different ways for expressing the semantics of possible interactions.
+  * How can iot.schema.org semantics be used to annotate LwM2M and IPSO models.
 
 - How does the application handle life cycle events and phases
   * Registration and Discovery
-    * LwM2M clients register to LwM2M Management Server
+    * LwM2M clients register to LwM2M Management Server; 
   * Configuration of resources
     * All LwM2M management and application resources are (eventually) exposed by clients
   * Operational Data Exchange
     * CoAP with text/plain
+    * TDs with HTTP and JSON-LD
   * Shutdown and de-registration
     * Not implemented
 
@@ -41,7 +43,7 @@ expect to participate in.
 See the diagram on slide 5 "Interop Schematic Diagram - Roles and Interactions":
 https://github.com/t2trg/wishi/blob/master/slides/Wishi-Interop-19022018.pdf
 
-* Intermediary that translates LwM2M registration information into TD
+* Intermediary that translates LwM2M registration information into TD and registers it to Thing Directory
 * Connected thing (standard Leshan LwM2M client)
 * Standard Leshan LwM2M Management Server  
 * Possibly Thing Directory (WoT Thingweb implementation)
