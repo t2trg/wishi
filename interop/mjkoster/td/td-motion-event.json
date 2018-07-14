@@ -15,7 +15,7 @@
       "observable": true,
       "@type": ["Property", "iot:MotionDetected"],
       "type": "array",
-      "items": [
+      "items":
         {
           "type": "object",
           "properties": {
@@ -28,8 +28,7 @@
               "type": "boolean"
             }
           }
-        }
-      ],
+        },
       "forms": [
         {
           "href": "/3300/2",
