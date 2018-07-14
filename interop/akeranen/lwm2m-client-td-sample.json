@@ -1,0 +1,203 @@
+{
+  "@context": [
+    "https://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+    {
+      "iot": "http://iotschema.org/",
+      "schema": "http://schema.org/"
+    }
+  ],
+  "@type": [
+    "Thing"
+  ],
+  "id": "urn:dev:eid:3881:wishi-lwm2m-ch",
+  "name": "wishi-lwm2m-ch",
+  "actions": {
+    "LWM2MServerRegistrationUpdateTrigger": {
+      "@type": [
+        "Action"
+      ],
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/1/0/8",
+          "mediaType": "application/octet-stream"
+        }
+      ]
+    },
+    "DeviceReboot": {
+      "@type": [
+        "Action"
+      ],
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/3/0/4",
+          "mediaType": "application/octet-stream"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "LWM2MServerShortServerID": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/1/0/0",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "LWM2MServerLifetime": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": true,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/1/0/1",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "LWM2MServerNotificationStoringWhenDisabledorOffline": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": true,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/1/0/6",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "LWM2MServerBinding": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": true,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/1/0/7",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "DeviceErrorCode": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/3/0/11",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "DeviceSupportedBindingandModes": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/3/0/16",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "LocationLatitude": {
+      "@type": [
+        "Property",
+        "schema:latitude"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/6/0/0",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "LocationLongitude": {
+      "@type": [
+        "Property",
+        "schema:longitude"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/6/0/1",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "LocationTimestamp": {
+      "@type": [
+        "Property"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/6/0/5",
+          "mediaType": "text/plain"
+        }
+      ]
+    },
+    "TemperatureSensorValue": {
+      "@type": [
+        "Property",
+        "iot:Temperature"
+      ],
+      "schema": {
+        "type": "string"
+      },
+      "writable": false,
+      "observable": false,
+      "forms": [
+        {
+          "href": "coap://31.133.146.173:49180/3303/0/5700",
+          "mediaType": "text/plain"
+        }
+      ]
+    }
+  }
+}
