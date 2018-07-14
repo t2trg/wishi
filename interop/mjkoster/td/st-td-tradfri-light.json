@@ -21,8 +21,10 @@
               "type": "object",
               "properties": {
                 "5850": {
-                  "type": "boolean",
-                  "@type": "iot:SwitchData"
+                  "type": "integer",
+                  "@type": "iot:SwitchData",
+                  "minimum": 0,
+                  "maximum": 1
                 },
                 "5851": {
                   "type": "number",
@@ -55,8 +57,10 @@
               "type": "object",
               "properties": {
                 "5850": {
-                  "type": "boolean",
-                  "@type": "iot:SwitchData"
+                  "type": "integer",
+                  "@type": "iot:SwitchData",
+                  "minimum": 0,
+                  "maximum": 1
                 }
               }
             }
@@ -115,19 +119,20 @@
               {
                 "type": "object",
                 "properties": {
-                  "5850": { "type": "boolean", "const": true }
+                  "5850": { "type": "integer", "const": 1 }
                 }
               }
             ]
           }
-        },
-        "forms": [
-          {
-            "href": "/15001/65544",
-            "mediaType": "application/json"
-          }
-        ]
-      }
+        }
+      },
+      "forms": [
+        {
+          "href": "/15001/65544",
+          "mediaType": "application/json",
+          "coap:methodCode": 3
+        }
+      ]
     },
     "turnoff": {
       "label": "TurnOff",
@@ -142,19 +147,20 @@
               {
                 "type": "object",
                 "properties": {
-                  "5850": { "type": "boolean", "const": false }
+                  "5850": { "type": "integer", "const": 0 }
                 }
               }
             ]
           }
-        },
-        "forms": [
-          {
-            "href": "/15001/65544",
-            "mediaType": "application/json"
-          }
-        ]
-      }
+        }
+      },
+      "forms": [
+        {
+          "href": "/15001/65544",
+          "mediaType": "application/json",
+          "coap:methodCode": 3
+        }
+      ]
     },
     "setlevel": {
       "label": "SetLevel",
@@ -179,14 +185,15 @@
               }
             ]
           }
-        },
-        "forms": [
-          {
-            "href": "/15001/65544",
-            "mediaType": "application/json"
-          }
-        ]
-      }
+        }
+      },
+      "forms": [
+        {
+          "href": "/15001/65544",
+          "mediaType": "application/json",
+          "coap:methodCode": 3
+        }
+      ]
     }
   }
 }
