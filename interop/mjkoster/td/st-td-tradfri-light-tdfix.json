@@ -111,15 +111,15 @@
                 "5850": { "type": "boolean", "const": 1 }
               }
             }
-        }
-        },
-        "forms": [
-          {
-            "href": "/15001/65544",
-            "mediaType": "application/json"
           }
-        ]
-      }
+        }
+      },
+      "forms": [
+        {
+          "href": "/15001/65544",
+          "mediaType": "application/json"
+        }
+      ]
     },
     "turnoff": {
       "label": "TurnOff",
@@ -137,14 +137,14 @@
               }
             }
           }
-        },
-        "forms": [
-          {
-            "href": "/15001/65544",
-            "mediaType": "application/json"
-          }
-        ]
-      }
+        }
+      },
+      "forms": [
+        {
+          "href": "/15001/65544",
+          "mediaType": "application/json"
+        }
+      ]
     },
     "setlevel": {
       "label": "SetLevel",
@@ -167,14 +167,14 @@
               }
             }
           }
-        },
-        "forms": [
-          {
-            "href": "/15001/65544",
-            "mediaType": "application/json"
-          }
-        ]
-      }
+        }
+      },
+      "forms": [
+        {
+          "href": "/15001/65544",
+          "mediaType": "application/json"
+        }
+      ]
     }
   }
 }
