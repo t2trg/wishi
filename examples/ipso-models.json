@@ -6,34 +6,42 @@
     "bt": 1530764634473
   },
   {
+    "comment": "Current Value",
     "n": "5700",
     "v": 46.5
   },
   {
+    "comment": "Units",
     "n": "5701",
     "vs": "ucum:Cel"
   },
   {
+    "comment": "Minimun Observed",
     "n": "5601",
     "v": 22.0
   },
   {
+    "comment": "Maximum Observed",
     "n": "5602",
     "v": 53.7
   },
   {
+    "comment": "Minimum Range",
     "n": "5603",
     "v": 0
   },
   {
+    "comment": "Maximum Range",
     "n": "5604",
     "v": 150
   },
   {
+    "comment": "ResetMinMaxObserved",
     "n": "5605",
     "v": null
   },
   {
+    "comment": "Application Type",
     "n": "5750",
     "vs": "urn:GeniviVSS:Powertrain:Gearbox:OilTemperature"
   }
@@ -43,7 +51,7 @@
 
 {
   "type": "array",
-  "items": [
+  "contains": [
     {
       "type": "object",
       "properties": {
@@ -75,7 +83,7 @@
         },
         "vs": {
           "type": "string",
-          "@type": "iot:Units"
+          "@type": "iot:UnitsData"
 
         }
       }
@@ -88,18 +96,42 @@
         },
         "vs": {
           "type": "string",
-          "@type": "iot:FeatureOfInterest"
+          "@type": "iot:ApplicationTypeData"
         }
       }
     }
   ]
 }
 
-// JSON Schema for the tracking limits and reset resource
+// JSON Schema for range and limits
 
 {
   "type": "array",
-  "items": [
+  "contains": [
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5603"
+        },
+        "v": {
+          "type": "number",
+          "@type": "iot:MinimumRangeData"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "n": {
+          "const": "5604"
+        },
+        "v": {
+          "type": "number",
+          "@type": "iot:MaximumRangeData"
+        }
+      }
+    },
     {
       "type": "object",
       "properties": {
@@ -131,8 +163,10 @@
         "n": {
           "const": "5605"
         },
-        "v": {
-          "const": null
+        "vs": {
+          "type": "null",
+          "@type": "iot:ResetMinMaxData"
+
         }
       }
     }
@@ -143,8 +177,8 @@
 
 {
   "@context": [
-    "https://w3c.github.io/wot/w3c-wot-td-context.jsonld",
-    "https://w3c.github.io/wot/w3c-wot-common-context.jsonld",
+    "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+    "http://w3c.github.io/wot/w3c-wot-common-context.jsonld",
     {"iot": "http://iotschema.org/iot#",
      "coap": "http://iotschema.org/coap#"}
   ],
@@ -172,11 +206,25 @@
             "minimum": 0,
             "maximum": 150
           }
+        },
+        "type": "object",
+        "properties": {
+          "type": "object",
+          "properties": {
+            "n": {
+              "const": "5701"
+            },
+            "vs": {
+              "type": "string",
+              "@type": "iot:UnitsData"
+
+            }
+          }
         }
       },
       "forms": [
         {
-          "href": "33003/1",
+          "href": "3303/1",
           "coap:contentformat": 60,
           "rel": "readProperty",
           "coap:methodCode": "0.01"
@@ -212,8 +260,25 @@
       },
       "forms": [
         {
-          "href": "33003/1",
+          "href": "3303/1",
           "coap:contentformat": 60,
+          "rel": "readProperty",
+          "coap:methodCode": "0.01"
+        }
+      ]
+    },
+    "LowTemperatureData": {
+      "writable": false,
+      "observable": true,
+      "@type": ["Property", "iot:MinimumObservedValue", "iot:TemperatureData"],
+      "type": "number",
+      "iot:units": "ucum:Cel",
+      "minimum": 0,
+      "maximum": 150,
+      "forms": [
+        {
+          "href": "3303/1/5601",
+          "coap:contentformat": 0,
           "rel": "readProperty",
           "coap:methodCode": "0.01"
         }
@@ -242,13 +307,30 @@
       },
       "forms": [
         {
-          "href": "33003/1",
+          "href": "3303/1",
           "coap:contentformat": 60,
           "rel": "readProperty",
           "coap:methodCode": "0.01"
         }
       ]
     }
+  },
+  "HighTemperatureData": {
+    "writable": false,
+    "observable": true,
+    "@type": ["Property", "iot:MaximumbservedValue", "iot:TemperatureData"],
+    "type": "number",
+    "iot:units": "ucum:Cel",
+    "minimum": 0,
+    "maximum": 150,
+    "forms": [
+      {
+        "href": "3303/1/5602",
+        "coap:contentformat": 0,
+        "rel": "readProperty",
+        "coap:methodCode": "0.01"
+      }
+    ]
   },
   "actions": {
     "resetminmax": {
@@ -264,25 +346,61 @@
   }
 }
 
-// iot.schema definition
+// iot.schema definition for the IPSO Smart Object common resources
+// Value Tracking
 {
-"@id": "iot:Temperature",
+  "@id": "iot:ValueTrackingCapability",
+  "@type": "rdfs:Class",
+  "rdfs:subClassOf": { "@id": "iot:Capability" },
+  "rdfs:comment": "Min/Max Value Tracking",
+  "rdfs:label": "ValueTrackingCapability",
+  "iot:providesInteractionPattern": [
+    {
+    "@id": "iot:ValueTracking",
+    "@id": "iot:ResetMinMax"
+    }
+  ]
+},
+{
+"@id": "iot:MinimumObservedValue",
 "@type": "rdfs:Class",
-"rdfs:comment": "Temperature interaction property",
-"rdfs:label": "Temperature",
+"rdfs:comment": "Minimum Value Tracking Property",
+"rdfs:label": "MinimumValueTrackingProperty",
 "rdfs:subClassOf": { "@id": "iot:Property" },
 "iot:providesOutputData": {
-  "@id": "iot:TemperatureData"
+  "@id": "iot:MinimumObservedValue",
   }
 },
 {
-"@id": "iot:TemperatureData",
+"@id": "iot:MinimumObservedValueData",
 "@type": "rdfs:Class",
-"rdfs:comment": " Temperature data",
-"rdfs:label": "TemperatureData",
+"rdfs:comment": "MinimumObservedValue",
+"rdfs:label": "MinimumObservedValue",
 "rdfs:subClassOf": { "@id": "schema:PropertyValue" },
-"schema:propertyType": { "@id": "schema:Float" },
-"schema:unitCode": { "@id": "iot:TemperatureUnit" },
-"schema:minValue": "schema:Float",
-"schema:maxValue": "schema:Float"
 },
+{
+"@id": "iot:MaximumObservedValue",
+"@type": "rdfs:Class",
+"rdfs:comment": "Maximum Value Tracking Property",
+"rdfs:label": "MaximumValueTrackingProperty",
+"rdfs:subClassOf": { "@id": "iot:Property" },
+"iot:providesOutputData": {
+  "@id": "iot:MaximumObservedValue",
+  }
+},
+{
+"@id": "iot:MaximumObservedValueData",
+"@type": "rdfs:Class",
+"rdfs:comment": "MaximumObservedValueData",
+"rdfs:label": "Maximum Observed MaximumObservedValueData",
+"rdfs:subClassOf": { "@id": "schema:PropertyValue" },
+},
+{
+"@id": "iot:ResetMinMax",
+"@type": "rdfs:Class",
+"rdfs:comment": "Reset Value Tracking",
+"rdfs:label": "ResetMinMax",
+"rdfs:subClassOf": { "@id": "iot:Action" }
+}
+
+// Unit resource
