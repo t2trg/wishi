@@ -1,0 +1,38 @@
+module acklio-youpi {
+    namespace "http://ackl.io/youpi";
+
+    prefix "youpi";
+
+    /**
+     *
+     * Extension for Binary data to CBOR mapping.
+     *
+     **/
+    extension position {
+        argument object;
+    }
+
+    extension fieldIndex {
+        argument object;
+    }
+
+    extension condition {
+        argument object;
+    }
+
+    extension multiplier {
+        argument object;
+    }
+
+    extension offset {
+        argument object;
+    }
+
+    extension units-subject {
+        argument object;
+    }
+
+    extension js {
+        argument object;
+    }
+}

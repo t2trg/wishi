@@ -1,0 +1,278 @@
+module device-example {
+    namespace "http://acklio.com";
+    prefix "acklio";
+
+    import acklio-youpi { prefix youpi; }
+
+    organization
+        "Acklio";
+
+    contact
+        "Editor:   Alexander Pelov
+        <mailto:a@ackl.io>
+
+        Editor:   Ivaylo Petrov
+        <mailto:ivaylo@ackl.io>";
+
+    description
+        "Example device configuration YANG module. Copyright ACKLIO 2017";
+
+    revision 2017-06-09 {
+        description "Initial revision.";
+    }
+
+
+    typedef mode-type {
+        type enumeration {
+            enum btn;
+            enum temp;
+            enum light;
+            enum door;
+            enum move;
+            enum reed;
+        }
+    }
+
+    typedef msg-type-type {
+        type enumeration {
+            enum regular;
+            enum btn;
+            enum alert;
+            enum modeChange;
+        }
+    }
+
+    typedef battery-level {
+        type decimal64 {
+            fraction-digits 2;
+            range "3 .. 4.2";
+        }
+        units "http://data.nasa.gov/qudt/owl/unit#Volt";
+        youpi:units-subject "http://data.nasa.gov/qudt/owl/quantity#EnergyPerElectricCharge";
+    }
+
+    typedef temperature {
+        type decimal64 {
+            fraction-digits 1;
+            range "-20..102";
+        }
+        units "http://data.nasa.gov/qudt/owl/unit#DegreeCelsius";
+        youpi:units-subject "http://data.nasa.gov/qudt/owl/quantity#ThermodynamicTemperature";
+    }
+
+    typedef temp-threshold {
+        type int8 {
+            range "-20 .. 107";
+        }
+        description "Temperature threshold in Celsius";
+        units "http://data.nasa.gov/qudt/owl/unit#DegreeCelsius";
+        youpi:units-subject "http://data.nasa.gov/qudt/owl/quantity#ThermodynamicTemperature";
+    }
+
+    typedef frequency-of-update {
+        type enumeration {
+            enum 10;
+            enum 60;
+            enum 360;
+            enum 1440;
+        }
+        units "http://data.nasa.gov/qudt/owl/unit#MinuteTime";
+        youpi:units-subject "http://pending.schema.org/repeatFrequency";
+    }
+
+    typedef accelerometer-sensitivity {
+        type enumeration {
+            enum very-little-sensitivity {
+                value 1049459;
+            }
+            enum not-very-sensitive {
+                value 524915;
+            }
+            enum standard {
+                value 262771;
+            }
+            enum sensitive {
+                value 196979;
+            }
+            enum very-sensitive {
+                value 262515;
+            }
+        }
+        description "Sensitivity of an accelerometer.";
+    }
+
+    typedef magnet-sensitivity {
+        type enumeration {
+            enum not-very-sensitive {
+                value 22;
+            }
+            enum standard {
+                value 50;
+            }
+            enum sensitive {
+                value 80;
+            }
+        }
+        description "Sensitivity of the magnet.";
+    }
+
+    typedef light-factor-type {
+        type enumeration {
+            enum 1;
+            enum 8;
+            enum 64;
+            enum 2014;
+        }
+    }
+
+    grouping light-type {
+        description "Light sensitivity of the sensor. To obtain the units in lux, multiply the base by the factor and divide by 100.";
+
+        leaf light-base {
+            type uint8 {
+                range "0..64";
+            }
+            youpi:position "relative 0..5";
+        }
+
+        leaf light-factor {
+            type light-factor-type;
+
+            description "The multiplicative factor. Note - on the wire, the values are as the numeration (0b00, 0b01, 0b10, 0b11), whereas for calculation, the factor is the face value of the enumeration (1, 8, 64, 2014)";
+            youpi:position "relative 6..7";
+        }
+
+        leaf light {
+            type decimal64 {
+                fraction-digits 2;
+            }
+            units "http://data.nasa.gov/qudt/owl/unit#Lux";
+            youpi:units-subject "http://data.nasa.gov/qudt/owl/quantity#LuminousFluxPerArea";
+            youpi:position "";
+            youpi:multiplier "0.01";
+            youpi:multiplier "light-factor";
+            youpi:offset "light-base";
+        }
+    }
+
+    grouping temp-precise-reed-type {
+        leaf temp {
+            type temperature;
+            youpi:position "16..21 | 12..15";
+            youpi:multiplier "0.125";
+            youpi:offset "-200";
+        }
+
+        leaf reed-state {
+            type boolean;
+            youpi:position "22";
+        }
+    }
+
+    container uplink {
+        leaf mode {
+            type mode-type;
+            default btn;
+            youpi:position "0..2";
+        }
+
+        leaf period {
+            type frequency-of-update;
+            default 360;
+            description "What is the frequency at which the node will report its values";
+            youpi:position "3..4";
+        }
+
+        leaf msg-type {
+            type msg-type-type;
+            youpi:position "5..6";
+        }
+
+        leaf battery {
+            type battery-level;
+            youpi:position "8..11 | 7";
+            youpi:multiplier "0.05";
+            youpi:offset "54";
+        }
+
+        leaf approximative-temp {
+            type temperature;
+            youpi:position "12..15";
+            youpi:multiplier "6.4";
+            youpi:offset "-3.125";
+            youpi:units-subject "http://ackl.io/iot/vocab/m3-lite#ApproximateTemperature";
+        }
+
+        choice data {
+            case _btn {
+                container button-data {
+                    uses temp-precise-reed-type;
+
+                    leaf minor-version {
+                        type uint8;
+                        youpi:position "24..27";
+                    }
+                    leaf major-version {
+                        type uint8;
+                        youpi:position "28..31";
+                    }
+                }
+            }
+            case _temp {
+                container temperature-data {
+                    uses temp-precise-reed-type;
+
+                    leaf humidity {
+                        type decimal64 {
+                            fraction-digits 1;
+                            range "0 .. 100";
+                        }
+                        units "http://data.nasa.gov/qudt/owl/unit#Percent";
+                        youpi:units-subject "https://w3id.org/saref#Humidity";
+                        youpi:position "24..31";
+                        youpi:multiplier "0.5";
+                    }
+                }
+            }
+            case _light {
+                container light-data {
+                    uses light-type;
+                }
+            }
+            case _door {
+                container door-data {
+                    leaf padding {
+                        type empty;
+                        youpi:position "16..23";
+                    }
+                    leaf count {
+                        type uint8;
+                        youpi:position "24..31";
+                    }
+                }
+            }
+            case _move {
+                container movement-data {
+                    uses temp-precise-reed-type;
+
+                    leaf count {
+                        type uint8;
+                        youpi:position "24..31";
+                    }
+                }
+            }
+            case _reed {
+                container reed-switch-data {
+                    uses temp-precise-reed-type;
+                    
+                    leaf count {
+                        type uint8;
+                        youpi:position "24..31";
+                    }
+                }
+            }
+            youpi:condition "mode";
+        }
+    }
+
+}
