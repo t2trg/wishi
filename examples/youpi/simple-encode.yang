@@ -1,0 +1,39 @@
+module termostate {
+    namespace "http://ackl.io/termostate";
+    prefix "coap";
+
+    import acklio-youpi { prefix youpi; }
+
+    organization "Acklio";
+
+    contact
+        "Editor:   Ivaylo Petrov
+        <mailto:ivaylo@ackl.io>";
+
+    description
+        "TODO";
+
+    revision 2019-11-15 {
+        description "Initial revision.";
+    }
+
+    typedef state-type {
+        type enumeration {
+            enum ON;
+            enum OFF;
+        }
+        description "State - ON or OFF";
+    }
+    container downlink {
+        leaf state {
+            type state-type;
+            youpi:position "0..0";
+            description "ON or OFF";
+        }
+        leaf temp {
+            type uint8;
+            youpi:position "1..7";
+            description "temperature to maintain";
+        }
+    }
+}
