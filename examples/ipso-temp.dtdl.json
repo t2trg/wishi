@@ -1,0 +1,87 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:com:ericsson:sdfobject:Temperature;1",
+    "displayName": "Temperature",
+    "description": "This IPSO object should be used with a temperature sensor to report a temperature measurement.  It also provides resources for minimum/maximum measured values and the minimum/maximum range that can be measured by the temperature sensor. An example measurement unit is degrees Celsius.",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "Sensor_Value",
+        "description": "Last or Current Measured Value from the Sensor.",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "Min_Measured_Value",
+        "description": "The minimum value measured by the sensor since power ON or reset.",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "Max_Measured_Value",
+        "description": "The maximum value measured by the sensor since power ON or reset.",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "Min_Range_Value",
+        "description": "The minimum value that can be measured by the sensor.",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "Max_Range_Value",
+        "description": "The maximum value that can be measured by the sensor.",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "Sensor_Units",
+        "description": "Measurement Units Definition.",
+        "schema": "string"
+      },
+      {
+        "@type": "Property",
+        "name": "Application_Type",
+        "description": "The application type of the sensor or actuator as a string depending on the use case.",
+        "schema": "string",
+        "writable": true
+      },
+      {
+        "@type": "Property",
+        "name": "Timestamp",
+        "description": "The timestamp of when the measurement was performed.",
+        "schema": "double"
+      },
+      {
+        "@type": [
+          "Property",
+          "TimeSpan"
+        ],
+        "name": "Fractional_Timestamp",
+        "description": "Fractional part of the timestamp when sub-second precision is used (e.g., 0.23 for 230 ms).",
+        "schema": "double",
+        "unit": "second"
+      },
+      {
+        "@type": "Property",
+        "name": "Measurement_Quality_Indicator",
+        "description": "Measurement quality indicator reported by a smart sensor. 0: UNCHECKED No quality checks were done because they do not exist or can not be applied. 1: REJECTED WITH CERTAINTY The measured value is invalid. 2: REJECTED WITH PROBABILITY The measured value is likely invalid. 3: ACCEPTED BUT SUSPICIOUS The measured value is likely OK. 4: ACCEPTED The measured value is OK. 5-15: Reserved for future extensions. 16-23: Vendor specific measurement quality.",
+        "schema": "integer"
+      },
+      {
+        "@type": "Property",
+        "name": "Measurement_Quality_Level",
+        "description": "Measurement quality level reported by a smart sensor. Quality level 100 means that the measurement has fully passed quality check algorithms. Smaller quality levels mean that quality has decreased and the measurement has only partially passed quality check algorithms. The smaller the quality level, the more caution should be used by the application when using the measurement. When the quality level is 0 it means that the measurement should certainly be rejected.",
+        "schema": "integer"
+      },
+      {
+        "@type": "Command",
+        "name": "Reset_Min_and_Max_Measured_Values",
+        "description": "Reset the Min and Max Measured Values to Current Value."
+      }
+    ]
+  }
+]
