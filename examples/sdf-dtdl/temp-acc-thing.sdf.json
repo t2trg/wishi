@@ -1,0 +1,63 @@
+{
+  "info": {
+    "title": "Temperature - accelerometer SDF Thing",
+    "version": "2021-06-09",
+    "copyright": "@akeranen",
+    "license": "BSD-3"
+  },
+  "sdfThing": {
+    "Temperature Accelerometer" :  {
+      "description": "Example SDF Thing for DTDL conversion experiments.",
+      "sdfObject": {
+        "Temperature" : {
+          "sdfProperty": {
+            "Current-value" : {
+              "type": "number",
+              "unit": "Cel",
+              "writable": false
+            },
+            "Minimum-value" : {
+              "type": "number",
+              "unit": "Cel",
+              "writable": false
+            },
+            "Maximum-value" : {
+              "type": "number",
+              "unit": "Cel",
+              "writable": false
+            },
+            "Latest-measurement" : {
+              "type": "string",
+              "format": "date-time" ,
+              "writable": false
+            }
+          },
+          "sdfAction": {
+            "Reset-minmax" : {
+              "description": "Resets minimum and maximum values to current value"
+            }
+          }
+        },
+        "Accelerometer" : {
+          "sdfProperty": {
+            "X-value" : {
+              "type": "number",
+              "unit": "m/s2",
+              "writable": false
+            },
+            "Y-value" : {
+              "type": "number",
+              "unit": "m/s2",
+              "writable": false
+            },
+            "Z-value" : {
+              "type": "number",
+              "unit": "m/s2",
+              "writable": false
+            }
+          }
+        }
+      }
+    } 
+  }
+}

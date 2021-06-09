@@ -1,0 +1,101 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:com:ericsson:sdfthing:Temperature_Accelerometer;1",
+    "displayName": "Temperature Accelerometer",
+    "description": "Example SDF Thing for DTDL conversion experiments.",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "Temperature",
+        "schema": "dtmi:com:ericsson:sdfobject:Temperature;1"
+      },
+      {
+        "@type": "Component",
+        "name": "Accelerometer",
+        "schema": "dtmi:com:ericsson:sdfobject:Accelerometer;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:com:ericsson:sdfobject:Temperature;1",
+    "displayName": "Temperature",
+    "contents": [
+      {
+        "@type": [
+          "Property",
+          "Temperature"
+        ],
+        "name": "Current-value",
+        "schema": "double",
+        "unit": "degreeCelsius"
+      },
+      {
+        "@type": [
+          "Property",
+          "Temperature"
+        ],
+        "name": "Minimum-value",
+        "schema": "double",
+        "unit": "degreeCelsius"
+      },
+      {
+        "@type": [
+          "Property",
+          "Temperature"
+        ],
+        "name": "Maximum-value",
+        "schema": "double",
+        "unit": "degreeCelsius"
+      },
+      {
+        "@type": "Property",
+        "name": "Latest-measurement",
+        "schema": "dateTime"
+      },
+      {
+        "@type": "Command",
+        "name": "Reset-minmax",
+        "description": "Resets minimum and maximum values to current value"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "@id": "dtmi:com:ericsson:sdfobject:Accelerometer;1",
+    "displayName": "Accelerometer",
+    "contents": [
+      {
+        "@type": [
+          "Property",
+          "Acceleration"
+        ],
+        "name": "X-value",
+        "schema": "double",
+        "unit": "metrePerSecondSquared"
+      },
+      {
+        "@type": [
+          "Property",
+          "Acceleration"
+        ],
+        "name": "Y-value",
+        "schema": "double",
+        "unit": "metrePerSecondSquared"
+      },
+      {
+        "@type": [
+          "Property",
+          "Acceleration"
+        ],
+        "name": "Z-value",
+        "schema": "double",
+        "unit": "metrePerSecondSquared"
+      }
+    ]
+  }
+]
