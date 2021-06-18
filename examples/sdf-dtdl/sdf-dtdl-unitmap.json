@@ -1,0 +1,308 @@
+{
+  "m/s2": [
+    {
+      "unit": "metrePerSecondSquared",
+      "type": "Acceleration"
+    }
+  ],
+  "rad": [
+    {
+      "unit": "radian",
+      "type": "Angle"
+    }
+  ],
+  "m2": [
+    {
+      "unit": "squareMetre",
+      "type": "Area"
+    }
+  ],
+  "F": [
+    {
+      "unit": "farad",
+      "type": "Capacitance"
+    }
+  ],
+  "A": [
+    {
+      "unit": "ampere",
+      "type": "Current"
+    }
+  ],
+  "bit/s": [
+    {
+      "unit": "bitPerSecond",
+      "type": "DataRate"
+    }
+  ],
+  "Mbit/s": [
+    {
+      "unit": "mebibitPerSecond",
+      "type": "DataRate"
+    }
+  ],
+  "B/s": [
+    {
+      "unit": "bytePerSecond",
+      "type": "DataRate"
+    }
+  ],
+  "bit": [
+    {
+      "unit": "bit",
+      "type": "DataSize"
+    }
+  ],
+  "B": [
+    {
+      "unit": "byte",
+      "type": "DataSize"
+    }
+  ],
+  "KiB": [
+    {
+      "unit": "kibibyte",
+      "type": "DataSize"
+    }
+  ],
+  "kg/m3": [
+    {
+      "unit": "kilogramPerCubicMetre",
+      "type": "Humidity"
+    }
+  ],
+  "m": [
+    {
+      "unit": "metre",
+      "type": "Length"
+    }
+  ],
+  "cm": [
+    {
+      "unit": "centimetre",
+      "type": "Length"
+    }
+  ],
+  "mm": [
+    {
+      "unit": "millimetre",
+      "type": "Length"
+    }
+  ],
+  "km": [
+    {
+      "unit": "kilometre",
+      "type": "Length"
+    }
+  ],
+  "C": [
+    {
+      "unit": "coulomb",
+      "type": "ElectricCharge"
+    }
+  ],
+  "J": [
+    {
+      "unit": "joule",
+      "type": "Energy"
+    }
+  ],
+  "kWh": [
+    {
+      "unit": "kilowattHour",
+      "type": "Energy"
+    }
+  ],
+  "N": [
+    {
+      "unit": "newton",
+      "type": "Thrust"
+    }
+  ],
+  "Hz": [
+    {
+      "unit": "hertz",
+      "type": "Frequency"
+    }
+  ],
+  "MHz": [
+    {
+      "unit": "megahertz",
+      "type": "Frequency"
+    }
+  ],
+  "lx": [
+    {
+      "unit": "lux",
+      "type": "Illuminance"
+    }
+  ],
+  "H": [
+    {
+      "unit": "henry",
+      "type": "Inductance"
+    }
+  ],
+  "cd/m2": [
+    {
+      "unit": "candelaPerSquareMetre",
+      "type": "Luminance"
+    }
+  ],
+  "W": [
+    {
+      "unit": "watt",
+      "type": "Power"
+    }
+  ],
+  "kW": [
+    {
+      "unit": "kilowatt",
+      "type": "Power"
+    }
+  ],
+  "lm": [
+    {
+      "unit": "lumen",
+      "type": "LuminousFlux"
+    }
+  ],
+  "cd": [
+    {
+      "unit": "candela",
+      "type": "LuminousIntensity"
+    }
+  ],
+  "Wb": [
+    {
+      "unit": "weber",
+      "type": "MagneticFlux"
+    }
+  ],
+  "T": [
+    {
+      "unit": "tesla",
+      "type": "MagneticInduction"
+    }
+  ],
+  "kg": [
+    {
+      "unit": "kilogram",
+      "type": "Mass"
+    }
+  ],
+  "g": [
+    {
+      "unit": "gram",
+      "type": "Mass"
+    }
+  ],
+  "Pa": [
+    {
+      "unit": "pascal",
+      "type": "Pressure"
+    }
+  ],
+  "Ohm": [
+    {
+      "unit": "ohm",
+      "type": "Resistance"
+    }
+  ],
+  "dB": [
+    {
+      "unit": "decibel",
+      "type": "SoundPressure"
+    }
+  ],
+  "Bspl": [
+    {
+      "unit": "bel",
+      "type": "SoundPressure"
+    }
+  ],
+  "K": [
+    {
+      "unit": "kelvin",
+      "type": "Temperature"
+    }
+  ],
+  "Cel": [
+    {
+      "unit": "degreeCelsius",
+      "type": "Temperature"
+    }
+  ],
+  "s": [
+    {
+      "unit": "second",
+      "type": "TimeSpan"
+    }
+  ],
+  "ms": [
+    {
+      "unit": "millisecond",
+      "type": "TimeSpan"
+    }
+  ],
+  "min": [
+    {
+      "unit": "minute",
+      "type": "TimeSpan"
+    }
+  ],
+  "h": [
+    {
+      "unit": "hour",
+      "type": "TimeSpan"
+    }
+  ],
+  "m/s": [
+    {
+      "unit": "metrePerSecond",
+      "type": "Velocity"
+    }
+  ],
+  "m/h": [
+    {
+      "unit": "metrePerHour",
+      "type": "Velocity"
+    }
+  ],
+  "km/h": [
+    {
+      "unit": "kilometrePerHour",
+      "type": "Velocity"
+    }
+  ],
+  "V": [
+    {
+      "unit": "volt",
+      "type": "Voltage"
+    }
+  ],
+  "mV": [
+    {
+      "unit": "millivolt",
+      "type": "Voltage"
+    }
+  ],
+  "m3": [
+    {
+      "unit": "cubicMetre",
+      "type": "Volume"
+    }
+  ],
+  "l": [
+    {
+      "unit": "litre",
+      "type": "Volume"
+    }
+  ],
+  "l/s": [
+    {
+      "unit": "litrePerSecond",
+      "type": "VolumeFlowRate"
+    }
+  ]
+}
