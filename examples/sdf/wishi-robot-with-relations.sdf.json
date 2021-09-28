@@ -1,0 +1,64 @@
+{
+  "info": {
+    "title": "Robot arm SDF instance and relation example",
+    "version": "2021-09-27",
+    "copyright": "",
+    "license": ""
+  },
+  "namespace": {
+    "eiot": "https://iot.ericsson.com/exampledefs",
+    "ipso": "https://omaspecworks.com/ipso/models",
+    "saref": "https://saref.etsi.org/saref4bldg/v1.1.2/"
+  },
+  "defaultNamespace": "eiot",
+
+  "sdfObject": {
+    "RobotArm": {
+      "sdfProperty": {
+        "X": {
+          "description": "X coordinate of the robot arm",
+          "type": "number",
+          "unit": "m"
+        },
+        "Y": {
+          "type": "number",
+          "unit": "m"
+        },
+        "Z": {
+          "type": "number",
+          "unit": "m"
+        },
+        "GripperState": {
+          "description": "State of the gripper: true = open, false = closed",
+          "type": "boolean"
+        }
+      },
+      "sdfRelation": {
+        "measured-temp": {
+          "type": "eiot:measured-by",
+          "target": "ipso:#/sdfObject/Temperature"
+        }
+      }
+    }
+  },
+
+  "sdfInstance": {
+    "robot-arm-1": {
+      "sdfInstanceOf": "#/sdfObject/RobotArm",
+      "sdfProperty" : {
+        "X" : {
+          "minimum" : 0
+        }
+      }
+    }, 
+    "sensor1": {
+      "sdfInstanceOf": "ipso:#/sdfObject/Temperature",
+      "sdfRelation": {
+        "robot-arm-with-temperature" : {
+         "type" : "saref:iscontainedIn",
+         "target" : "#/sdfInstances/robot-arm-1"
+        }
+      }
+    }
+  }
+}
