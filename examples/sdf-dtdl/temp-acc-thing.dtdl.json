@@ -29,7 +29,7 @@
           "Property",
           "Temperature"
         ],
-        "name": "Current-value",
+        "name": "Current_value",
         "schema": "double",
         "unit": "degreeCelsius"
       },
@@ -38,7 +38,7 @@
           "Property",
           "Temperature"
         ],
-        "name": "Minimum-value",
+        "name": "Minimum_value",
         "schema": "double",
         "unit": "degreeCelsius"
       },
@@ -47,18 +47,18 @@
           "Property",
           "Temperature"
         ],
-        "name": "Maximum-value",
+        "name": "Maximum_value",
         "schema": "double",
         "unit": "degreeCelsius"
       },
       {
         "@type": "Property",
-        "name": "Latest-measurement",
+        "name": "Latest_measurement",
         "schema": "dateTime"
       },
       {
         "@type": "Command",
-        "name": "Reset-minmax",
+        "name": "Reset_minmax",
         "description": "Resets minimum and maximum values to current value"
       }
     ]
@@ -74,7 +74,7 @@
           "Property",
           "Acceleration"
         ],
-        "name": "X-value",
+        "name": "X_value",
         "schema": "double",
         "unit": "metrePerSecondSquared"
       },
@@ -83,7 +83,7 @@
           "Property",
           "Acceleration"
         ],
-        "name": "Y-value",
+        "name": "Y_value",
         "schema": "double",
         "unit": "metrePerSecondSquared"
       },
@@ -92,7 +92,7 @@
           "Property",
           "Acceleration"
         ],
-        "name": "Z-value",
+        "name": "Z_value",
         "schema": "double",
         "unit": "metrePerSecondSquared"
       }
